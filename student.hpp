@@ -7,7 +7,7 @@ using namespace std;
 class Student
 {
 public:
-        Student(string f, string l, float C, int R, int A)
+        Student(string FN, string LN, float cgpa, int Res, int App);
        
         string getFirst_name();
         string getLast_name();
@@ -15,11 +15,12 @@ public:
         int getRes_score();
         int getApp_id();
 
-        void setFirst_name(string f);
-        void setLast_name(string l);
-        void setCGPA(float C);
-        void setRes_score(int R);
-        void setApp_id(int A);
+        //using shortened versions of names
+        void setFirst_name(string FN);
+        void setLast_name(string LN);
+        void setCGPA(float CG);
+        void setRes_score(int Res);
+        void setApp_id(int App);
 
 private:
         //functions for error checking  
@@ -32,7 +33,7 @@ private:
 };
 
 
-class InternationalStudent //public: Student
+class InternationalStudent : public Student
 {
 private:
         string Country;
@@ -42,8 +43,40 @@ public:
         InternationalStudent(string C, int T);
         string getCountry();
         int getToeflScore();
-        void setCountry(string C);
-        void setToeflScore(int T);
+        void setCountry(string Cnt);
+        void setToeflScore(int score);
 
 };
-                        
+
+class DomesticStudent: public Student
+{
+        private:
+                string Province;
+        public:
+                string getProvince();
+                void setProvince(string PRV);
+
+};
+
+class ToeflScore
+{
+        private:
+                int reading;
+                int listening;
+                int speaking;
+                int writing;
+                int total;
+        public:
+                int getReading();
+                int getListening();
+                int getSpeaking();
+                int getWriting();
+                int getTotal();
+                //just using shortened names
+                void setReading(int read);
+                void setListening(int listen);
+                void setSpeaking(int speak);
+                void setWriting(int write);
+                void setTotal(int tot);
+
+};      
