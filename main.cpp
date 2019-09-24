@@ -100,7 +100,7 @@ ifstream internationalFile("international-stu.txt");
    *use get and set functions to manipulate your object, and
    *print the object content to the screen
    */
-  int stu_Count = 1;
+  int istu_count = 1;
   while(getline(internationalFile, line)) 
   {
     /*process each line, each field is separated by a comma.
@@ -156,7 +156,7 @@ ifstream internationalFile("international-stu.txt");
 	 << ", listening score of " << listening << ", speaking score of " << speaking << ", and writing score of "
 	 << writing << endl;
 	 
-    stu_count++;
+    istu_count++;
   }
 
   //close your file
