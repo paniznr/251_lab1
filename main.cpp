@@ -79,7 +79,12 @@ int main(){
 	
 	
 	
-	
+ifstream internationalFile("international-stu.txt");
+  if(!internationalFile.is_open()) 
+  {
+    cout << "Unable to open file international-stu.txt" << endl;
+    return -1;
+  }	
 	
 	//INTERNATIONAL STUDENT
 //Read the first line of international-stu.txt, which specifies
