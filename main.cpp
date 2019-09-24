@@ -73,11 +73,14 @@ int main(){
 
   //close your file
   domesticFile.close();
-
-  return 0;
-} 
-
-//INTERNATIONAL STUDENT
+	/////////////////////////////////
+	
+	
+	
+	
+	
+	
+	//INTERNATIONAL STUDENT
 //Read the first line of international-stu.txt, which specifies
 //the file format. And then print it out to the screen
   getline(internationalFile, line);
@@ -155,4 +158,5 @@ int main(){
 
   return 0;
 } 
+
 
