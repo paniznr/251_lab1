@@ -34,6 +34,7 @@ int main(){
    *print the object content to the screen
    */
   int stu_count = 1;
+	
   while( getline(domesticFile, line) ) {
     /*process each line, get each field separated by a comma.
      *We use istringstream to handle it.
@@ -63,6 +64,14 @@ int main(){
     //get researchScore separated by comma, and convert it to int
     getline(ss, s_researchScore, ',');
     researchScore = atoi(s_researchScore.c_str());
+	  
+	  
+	//create application IDs
+    
+    appId=20200000+(app_count);
+
+     Student firstName(firstName, lastName, cgpa, researchScore);
+    //print the student info to the screen
 
     //print the student info to the screen
     cout << "Domestic student " << stu_count << " " << firstName << " " 
@@ -70,6 +79,7 @@ int main(){
 	 << cgpa << ", and research score of " << researchScore << endl;
 
     stu_count++;
+	app_count++;
   }
 
   //close your file
@@ -157,6 +167,7 @@ ifstream internationalFile("international-stu.txt");
 	 << writing << endl;
 	 
     istu_count++;
+	  app_count++;
   }
 
   //close your file
