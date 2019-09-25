@@ -6,19 +6,31 @@
 #include <cstdlib> //atof and atoi
 #include "student.hpp"
 
-/*I provide example code here to help you read the input
- *data from a file, so that you can focus on creating
- *and manipulating classes and objects
- */
 int main(){
-  //Read the domestic-stu.txt file and exit if failed
-  string line;
+
+
+  
+
+
+  //general variables used for all students:
+  int appId;
+  int app_count;
+  string line, firstName, lastName;
+  float cgpa;
+  int researchScore;
+
+
+//DOMESTIC STUDENTS -----------------------------------------------------
+    //Read the domestic-stu.txt file and exit if failed
+
   ifstream domesticFile("domestic-stu.txt");
   if(!domesticFile.is_open()) 
   {
     cout << "Unable to open file domestic-stu.txt" << endl;
     return -1;
   }
+  
+
 
   //Read the first line of domestic-stu.txt, which specifies
   //the file format. And then print it out to the screen
@@ -33,20 +45,14 @@ int main(){
    *use get and set functions to manipulate your object, and
    *print the object content to the screen
    */
-  int stu_count = 1;
+  int stu_count = 0;
+  app_count=0;
 	
   while( getline(domesticFile, line) ) {
-    /*process each line, get each field separated by a comma.
-     *We use istringstream to handle it.
-     *Note in this example code here, we assume the file format
-     *is perfect and do NOT handle error cases. We will leave the
-     *error and exception handling of file format to Lab Assignment 4
-     */
     istringstream ss(line);
 
-    string firstName, lastName, province, s_cgpa, s_researchScore;
+    string  province, s_cgpa, s_researchScore;
     float cgpa;
-    int researchScore;
 
     //get firstName separated by comma
     getline(ss, firstName, ',');
@@ -69,14 +75,21 @@ int main(){
 	//create application IDs
     
     appId=20200000+(app_count);
+    int i=1;
+  
 
-     Student firstName(firstName, lastName, cgpa, researchScore);
+    Student person(firstName, lastName, cgpa, researchScore,appId);
+    DomesticStudent DomStudent(province);
+    
+
+
+    //person.cgpa_check(cgpa);
     //print the student info to the screen
 
     //print the student info to the screen
-    cout << "Domestic student " << stu_count << " " << firstName << " " 
-	 << lastName << " from " << province << " province has cgpa of "
-	 << cgpa << ", and research score of " << researchScore << endl;
+    cout << "Domestic student " << stu_count << " " << person.getFirst_name() << " " 
+	 << person.getLast_name() << " from " << DomStudent.getProvince() << " province has cgpa of "
+	 << person.getCGPA() << ", and research score of " << researchScore << " with application ID number "<<appId<<endl;
 
     stu_count++;
 	app_count++;
@@ -164,7 +177,7 @@ ifstream internationalFile("international-stu.txt");
 	 << LastName << " from " << Country << " country has cgpa of "
 	 << CGPA << ", research score of " << ResearchScore << ", reading score of " << reading
 	 << ", listening score of " << listening << ", speaking score of " << speaking << ", and writing score of "
-	 << writing << endl;
+	 << writing <<" with application ID number "<<appId<< endl;
 	 
     istu_count++;
 	  app_count++;
