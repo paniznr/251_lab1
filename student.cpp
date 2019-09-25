@@ -1,204 +1,243 @@
-//main.cpp, put your driver code here, 
-//you can manipulate your class objects here
-#include <iostream> //cin and cout
-#include <fstream> //file processing
-#include <sstream> //formatted string processing
-#include <cstdlib> //atof and atoi
+//student.cpp to implement your classes
+
+
+//FILE WITHOUT REDEFINING ALL CLASSES
+
+
 #include "student.hpp"
+#include <iostream>
+#include <string>
 
-int main(){
+using namespace std;
 
+//constructors never have return type
+        
+        //Student class:
+        //Creating constructor for student, where FN, LN, cgpa, Res, App are the variables which would be initialized
+        //in main.cpp
+        Student::Student(string FN, string LN, float cgpa, int Res, int App):
+        First_name(FN), Last_name(LN), CGPA(cgpa), Res_score(Res), App_id(App)
+        {
 
-  
+        }
+Student::Student(){};
+        
+        //Student GET FUNCTIONS
+        //These will return a private member value when called in main.cpp
+        string Student::getFirst_name()
+        {
+            return First_name;
+        }
+        string Student::getLast_name()
+        {
+            return Last_name;
+        }
+        float Student::getCGPA()
+        {
+            return CGPA;
+        }
+        int Student::getRes_score()
+        {
+            return Res_score;
+        }
+        int Student::getApp_id()
+        {
+            return App_id;
+        }
 
+        
+        //STUDENT SET FUNCTION
+        //These will apply the value given in main.cpp to the private variable in Student
+        void Student::setFirst_name(string FN)
+        {
+            First_name=FN;
+        }
+        void Student::setLast_name(string LN)
+        {
+            Last_name=LN;
+        }
+        void Student::setCGPA(float cgpa)
+        {
+            CGPA=cgpa;
+        }
+        void Student::setRes_score(int Res)
+        {
+            Res_score=Res;
+        }
+        void Student::setApp_id(int App)
+        {
+            App_id=App;
+        }
+        //error checking
+        //Checking if CGPA is valid to SFU's marking system
+        void cgpa_check(float cgpa)
+        {
+            if (cgpa<0 || cgpa>4.33)
+            {
+                cout<<"Invalid CGPA.";
+            }
+        }
+        //Checking if Research score is valid
+        void res_score_check(int Res)
+        {
+            if (Res<0 || Res>100)
+            {
+                cout<<"Invalid research score.";
+            }
+        }
 
-  //general variables used for all students:
-  int appId;
-  int app_count;
-  string line, firstName, lastName;
-  float cgpa;
-  int researchScore;
-
-
-//DOMESTIC STUDENTS -----------------------------------------------------
-    //Read the domestic-stu.txt file and exit if failed
-
-  ifstream domesticFile("domestic-stu.txt");
-  if(!domesticFile.is_open()) 
-  {
-    cout << "Unable to open file domestic-stu.txt" << endl;
-    return -1;
-  }
-  
-
-
-  //Read the first line of domestic-stu.txt, which specifies
-  //the file format. And then print it out to the screen
-  getline(domesticFile, line);
-  cout << "File format: " << line << endl;
-
-  /*Keep reading the rest of the lines in domestic-stu.txt.
-   *In the example code here, I will read each data separated
-   *by a comma, and then print it out to the screen.
-   *In your lab assignment 1, you should use these read data
-   *to initialize your DomesticStudent object. Then you can
-   *use get and set functions to manipulate your object, and
-   *print the object content to the screen
-   */
-  int stu_count = 1;
-  app_count=1;
-	
-  while( getline(domesticFile, line) ) {
-    istringstream ss(line);
-
-    string  province, s_cgpa, s_researchScore;
-    float cgpa;
-
-    //get firstName separated by comma
-    getline(ss, firstName, ',');
-
-    //get lastName separated by comma
-    getline(ss, lastName, ',');
-
-    //get province separated by comma
-    getline(ss, province, ',');
-
-    //get cpga separated by comma, and convert string to float
-    getline(ss, s_cgpa, ',');
-    cgpa = atof(s_cgpa.c_str());
-    
-    //get researchScore separated by comma, and convert it to int
-    getline(ss, s_researchScore, ',');
-    researchScore = atoi(s_researchScore.c_str());
-	  
-	  
-	//create application IDs
-    
-    appId=20200000+(app_count);
-    int i=1;
-  
-
-    Student person(firstName, lastName, cgpa, researchScore,appId);
-    DomesticStudent DomStudent(province);
-    
-
-
-    //person.cgpa_check(cgpa);
-    //print the student info to the screen
-
-    //print the student info to the screen
-    cout << "Domestic student " << stu_count << " " << person.getFirst_name() << " " 
-	 << person.getLast_name() << " from " << DomStudent.getProvince() << " province has cgpa of "
-	 << person.getCGPA() << ", and research score of " << researchScore << " with application ID number "<<appId<<endl;
-
-    stu_count++;
-	app_count++;
-  }
-
-  //close your file
-  domesticFile.close();
-	/////////////////////////////////
-	
-	
-	//InternationalStudent ---------------------------------------------------------------
-	
-ifstream internationalFile("international-stu.txt");
-  if(!internationalFile.is_open()) 
-  {
-    cout << "Unable to open file international-stu.txt" << endl;
-    return -1;
-  }	
-	
-	//INTERNATIONAL STUDENT
-//Read the first line of international-stu.txt, which specifies
-//the file format. And then print it out to the screen
-  getline(internationalFile, line);
-  cout << "File format: " << line << endl;
-//FirstName,LastName,Country,CGPA,ResearchScore,Reading,Listening,Speaking,Writing
-
-  /*Continuing reading the rest of the lines in international-stu.txt.
-   each data is separated by a comma, and then printed out to the screen.
-   Use this read data to initialize the InternationalStudent object.
-   *Then you can
-   *use get and set functions to manipulate your object, and
-   *print the object content to the screen
-   */
-  int istu_count = 1;
-  while(getline(internationalFile, line)) 
-  {
-    /*process each line, each field is separated by a comma.
-    We use istringstream to handle it.
-    */
-    istringstream ss(line);
-
-    string Country, s_CGPA, s_ResearchScore, s_Reading, s_Listening, s_Speaking, s_Writing;
-    //float CGPA;
-    //int ResearchScore;
-    /*
-    firstName, lastName;
-  float cgpa;
-  int researchScore;
-    */
-    int reading;
-    int listening;
-    int speaking;
-    int writing;
-
-    //get FirstName separated by comma
-    getline(ss, firstName, ',');
-
-    //get LastName separated by comma
-    getline(ss, lastName, ',');
-
-    //get Country separated by comma
-    getline(ss, Country, ',');
-
-    //get CGPA separated by comma, and convert string to float
-    getline(ss, s_CGPA, ',');
-    cgpa = atof(s_CGPA.c_str());
-    
-    //get ResearchScore separated by comma, and convert it to int
-    getline(ss, s_ResearchScore, ',');
-    researchScore = atoi(s_ResearchScore.c_str());
-	  
-    //get Reading separated by comma, and convert it to int
-    getline(ss, s_Reading, ',');
-    reading = atoi(s_Reading.c_str());
-	  
-    //get Listening separated by comma, and convert it to int
-    getline(ss, s_Listening, ',');
-    listening = atoi(s_Listening.c_str());
-	  
-    //get Speaking separated by comma, and convert it to int
-    getline(ss, s_Speaking, ',');
-    speaking = atoi(s_Speaking.c_str());
-
-    //get Writing separated by comma, and convert it to int
-    getline(ss, s_Writing, ',');
-    writing = atoi(s_Writing.c_str());
-
-    appId=20200000+(app_count);
-
-  ToeflScore IntStudScores( reading,  listening, speaking, writing);
-
-    Student person(firstName, lastName, cgpa, researchScore, appId);
-    InternationalStudent IntStud(Country);
-	  
-    //print the student info to the screen
-    cout << "International student " << stu_count << " " << person.getFirst_name() << " " 
-	 << person.getLast_name() << " from " << IntStud.getCountry() << " country has cgpa of "
-	 << person.getCGPA() << ", research score of " << person.getRes_score() << ", reading score of " << IntStudScores.getReading()
-	 << ", listening score of " << IntStudScores.getListening() << ", speaking score of " << IntStudScores.getSpeaking() << ", a writing score of "
-	 << IntStudScores.getWriting() <<"and a total score of"<<IntStudScores.getTotal()<<" with application ID number "<<appId<< endl;
-	 
-    istu_count++;
-	  app_count++;
-  }
-
-  //close your file
-  internationalFile.close();
-
-  return 0;
-} 
+        //Checking if application ID is valid (should be between 20200000 and 20209999)
+        void id_check(int App)
+        {
+            if (App<20200000 || App>20209999)
+            {
+                cout<<"Invalid application ID.";
+            }
+        }
 
 
+
+
+
+
+        //InternationalStudent Class
+        InternationalStudent::InternationalStudent(string Cnt)
+        {}
+InternationalStudent::InternationalStudent(){};
+        //InternationalStudent GET FUNCTIONS
+        string InternationalStudent::getCountry()
+        {
+            return Country;
+        }
+       //int InternationalStudent::getScore()
+       // {
+        //    return Score;
+       // }
+        //InternationalStudent SET FUNCTIONS
+        void InternationalStudent::setCountry(string Cnt)
+        {
+            Country=Cnt;
+        }
+        //void InternationalStudent::setToeflScore(int score){
+        //    Score=score;
+       // }
+        //InternationalStudent errorchecking
+        //checking if student's score is valid
+        void intStu_score_check(int score)
+        {
+            if (score<0 || score>120)
+            {
+                cout<<"Invalid International student Toefl score.";
+            }
+        }
+
+
+
+
+        //DomesticStudent 
+        DomesticStudent::DomesticStudent(string PRV):
+        Province(PRV){}
+        //GET FUNCTION
+DomesticStudent::DomesticStudent(){};
+        string  DomesticStudent::getProvince()
+        {
+            return Province;
+        }
+        //SET FUNCTION
+        void  DomesticStudent::setProvince(string PRV)
+        {
+            Province=PRV;
+        }
+
+
+
+        //ToeflScore Class
+        //took out total from constructor line because can make it with 4 inputs
+        ToeflScore::ToeflScore(int read, int listen, int speak, int write):
+        reading(read), listening(listen), speaking(speak), writing(write)
+        {}
+ToeflScore::ToeflScore(){};
+        //ToeflScore
+        int ToeflScore::getReading()
+        {
+            return reading;
+        }
+        int ToeflScore::getListening()
+        {
+            return listening;
+        }
+        int ToeflScore::getSpeaking()
+        {
+            return speaking;
+        }
+        int ToeflScore::getWriting()
+        {
+            return writing;
+        }
+        int ToeflScore::getTotal()
+        {
+	  total=reading+listening+speaking+writing;
+            return total;
+        }
+        //just using shortened names
+        void ToeflScore::setReading(int read)
+        {
+            reading=read;
+        }
+        void ToeflScore::setListening(int listen)
+        {
+            listening=listen;
+        }
+        void ToeflScore::setSpeaking(int speak)
+        {
+            speaking=speak;
+        }
+        void ToeflScore::setWriting(int write)
+        {
+            writing=write;
+        }
+        // void ToeflScore::setTotal(int tot)
+        // {
+        //     total=tot;
+        // }
+        void ToeflScore::setTotal(int read, int listen, int speak, int write)
+        {
+            total=read+listen+speak+write;
+        }
+
+
+        void reading_check(int read)
+        {
+                if (read<0 || read>30) 
+                {
+                        cout<<"Invalid reading Toefl score.";
+                }
+        }
+        void listening_check(int listen)
+            {
+                if (listen<0 || listen>30) 
+                {
+                        cout<<"Invalid listening Toefl score.";
+                }
+        }
+        void speaking_check(int speak)
+            {
+                if (speak<0 || speak>30) 
+                {
+                        cout<<"Invalid speaking Toefl score.";
+                }
+        }
+        void writing_check(int write)
+            {
+                if (write<0 || write>30) 
+                {
+                        cout<<"Invalid writing Toefl score.";
+                }
+        }
+        void total_check(int tot)
+        {
+            if (tot>120)
+            {
+                cout<<"Invalid total Toefl score.";
+            }
+}
