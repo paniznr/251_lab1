@@ -45,8 +45,8 @@ int main(){
    *use get and set functions to manipulate your object, and
    *print the object content to the screen
    */
-  int stu_count = 0;
-  app_count=0;
+  int stu_count = 1;
+  app_count=1;
 	
   while( getline(domesticFile, line) ) {
     istringstream ss(line);
@@ -100,7 +100,7 @@ int main(){
 	/////////////////////////////////
 	
 	
-	
+	//InternationalStudent ---------------------------------------------------------------
 	
 ifstream internationalFile("international-stu.txt");
   if(!internationalFile.is_open()) 
@@ -131,30 +131,35 @@ ifstream internationalFile("international-stu.txt");
     */
     istringstream ss(line);
 
-    string FirstName, LastName, Country, s_CGPA, s_ResearchScore, s_Reading, s_Listening, s_Speaking, s_Writing;
-    float CGPA;
-    int ResearchScore;
+    string Country, s_CGPA, s_ResearchScore, s_Reading, s_Listening, s_Speaking, s_Writing;
+    //float CGPA;
+    //int ResearchScore;
+    /*
+    firstName, lastName;
+  float cgpa;
+  int researchScore;
+    */
     int reading;
     int listening;
     int speaking;
     int writing;
 
     //get FirstName separated by comma
-    getline(ss, FirstName, ',');
+    getline(ss, firstName, ',');
 
     //get LastName separated by comma
-    getline(ss, LastName, ',');
+    getline(ss, lastName, ',');
 
     //get Country separated by comma
     getline(ss, Country, ',');
 
     //get CGPA separated by comma, and convert string to float
     getline(ss, s_CGPA, ',');
-    CGPA = atof(s_CGPA.c_str());
+    cgpa = atof(s_CGPA.c_str());
     
     //get ResearchScore separated by comma, and convert it to int
     getline(ss, s_ResearchScore, ',');
-    ResearchScore = atoi(s_ResearchScore.c_str());
+    researchScore = atoi(s_ResearchScore.c_str());
 	  
     //get Reading separated by comma, and convert it to int
     getline(ss, s_Reading, ',');
@@ -171,13 +176,20 @@ ifstream internationalFile("international-stu.txt");
     //get Writing separated by comma, and convert it to int
     getline(ss, s_Writing, ',');
     writing = atoi(s_Writing.c_str());
+
+    appId=20200000+(app_count);
+
+  ToeflScore IntStudScores( reading,  listening, speaking, writing);
+
+    Student person(firstName, lastName, cgpa, researchScore, appId);
+    InternationalStudent IntStud(Country);
 	  
     //print the student info to the screen
-    cout << "International student " << stu_count << " " << FirstName << " " 
-	 << LastName << " from " << Country << " country has cgpa of "
-	 << CGPA << ", research score of " << ResearchScore << ", reading score of " << reading
-	 << ", listening score of " << listening << ", speaking score of " << speaking << ", and writing score of "
-	 << writing <<" with application ID number "<<appId<< endl;
+    cout << "International student " << stu_count << " " << person.getFirst_name() << " " 
+	 << person.getLast_name() << " from " << IntStud.getCountry() << " country has cgpa of "
+	 << person.getCGPA() << ", research score of " << person.getRes_score() << ", reading score of " << IntStudScores.getReading()
+	 << ", listening score of " << IntStudScores.getListening() << ", speaking score of " << IntStudScores.getSpeaking() << ", a writing score of "
+	 << IntStudScores.getWriting() <<"and a total score of"<<IntStudScores.getTotal()<<" with application ID number "<<appId<< endl;
 	 
     istu_count++;
 	  app_count++;
