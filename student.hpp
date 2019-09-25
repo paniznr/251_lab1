@@ -22,7 +22,7 @@ class ToeflScore
                 void writing_check(int write);
                 void total_check(int tot);
         public:
-                ToeflScore(int read, int listen, int speak, int write, int tot);
+                ToeflScore(int read, int listen, int speak, int write);
                 ToeflScore();
                 int getReading();
                 int getListening();
@@ -38,6 +38,9 @@ class ToeflScore
                 
 
 };      
+//adding this variable to use in the InternationalStudent
+ToeflScore inter_student;
+
 
 class Student
 {
@@ -83,16 +86,17 @@ class InternationalStudent : public Student
 {
 private:
         string Country;
-        ToeflScore inter_student;
-        void intStu_score_check(ToeflScore inter_student);
+        int Score;
+        void intStu_score_check(int Score);
 
 public: 
-        InternationalStudent(string Cnt, ToeflScore inter_student);
+        InternationalStudent(string Cnt);
+        //Student(string FN, string LN, float cgpa, int Res, int App);
         InternationalStudent();
         string getCountry();
-        int getToeflScore();
+        //int getScore();
         void setCountry(string Cnt);
-        void setToeflScore(int score);
+        //void setToeflScore(int score);
 
 };
 
