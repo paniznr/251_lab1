@@ -2,3 +2,25 @@
 #include <string>
 
 //array of classes
+//for Student
+Student Person[9999]; //assume less than 10,000 students, creating Array of max 9999 students
+for (i=1; i<10000; i++) //starts at 1 and increases each loop
+{
+  
+}
+
+cout<< "Student Information: ";  //this is part of main, we need to assign the info by the
+for(i=1; i<10000; i++)           //appropriate sections
+Student[i].PutData();
+
+//for Toefl
+ToeflScore TScore[120]; //max score of 120? or max ppl who can input their score?
+for (i=1; i<120; i++) //starts at 1 and increases each loop, as long as less than 20
+{
+  cout<<"Enter Toefl Scores: " << endl;
+  TScore[i].GetData(); //gets data for scores
+  TotTScore = reading + writing + listening + speaking;
+}
+cout<< "Toefl Score of Student is: " << TotTScore; //same as the student array, this is part of main
+//for(i=1; i<120; i++) 
+//Student[i].PutData();
