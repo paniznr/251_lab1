@@ -38,8 +38,6 @@ class ToeflScore
                 
 
 };      
-//adding this variable to use in the InternationalStudent
-ToeflScore inter_student;
 
 
 class Student
@@ -111,4 +109,3 @@ class DomesticStudent: public Student
                 void setProvince(string PRV);
 
 };
-
