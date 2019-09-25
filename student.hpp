@@ -7,6 +7,41 @@
 #include <string>
 using namespace std;
 
+class ToeflScore
+{
+        private:
+                int reading;
+                int listening;
+                int speaking;
+                int writing;
+                int total;
+
+                void reading_check(int read);
+                void listening_check(int listen);
+                void speaking_check(int speak);
+                void writing_check(int write);
+                void total_check(int tot);
+        public:
+                ToeflScore(int read, int listen, int speak, int write, int tot);
+                ToeflScore();
+                int getReading();
+                int getListening();
+                int getSpeaking();
+                int getWriting();
+                int getTotal();
+                //just using shortened names
+                void setReading(int read);
+                void setListening(int listen);
+                void setSpeaking(int speak);
+                void setWriting(int write);
+                void setTotal(int read, int listen, int speak, int write);
+                
+
+};      
+//adding this variable to use in the InternationalStudent
+ToeflScore inter_student;
+
+
 class Student
 {
 public:
@@ -51,11 +86,11 @@ class InternationalStudent : public Student
 {
 private:
         string Country;
-        int Score;
-        void intStu_score_check(int score);
+        ToeflScore inter_student;
+        void intStu_score_check(ToeflScore inter_student);
 
 public: 
-        InternationalStudent(string Cnt, int score);
+        InternationalStudent(string Cnt, ToeflScore inter_student);
         InternationalStudent();
         string getCountry();
         int getToeflScore();
@@ -76,34 +111,3 @@ class DomesticStudent: public Student
 
 };
 
-class ToeflScore
-{
-        private:
-                int reading;
-                int listening;
-                int speaking;
-                int writing;
-                int total;
-
-                void reading_check(int read);
-                void listening_check(int listen);
-                void speaking_check(int speak);
-                void writing_check(int write);
-                void total_check(int tot);
-        public:
-                ToeflScore(int read, int listen, int speak, int write, int tot);
-                ToeflScore();
-                int getReading();
-                int getListening();
-                int getSpeaking();
-                int getWriting();
-                int getTotal();
-                //just using shortened names
-                void setReading(int read);
-                void setListening(int listen);
-                void setSpeaking(int speak);
-                void setWriting(int write);
-                void setTotal(int read, int listen, int speak, int write);
-                
-
-};      
