@@ -186,13 +186,13 @@ ifstream internationalFile("international-stu.txt");
 	  
     //print the student info to the screen
     cout << "International student " << stu_count << " " << person.getFirst_name() << " " 
-	 << person.getLast_name() << " from " << IntStud.getCountry() << " country has cgpa of "
+	 << person.getLast_name() << " from " << IntStud.getCountry() << "  has cgpa of "
 	 << person.getCGPA() << ", research score of " << person.getRes_score() << ", reading score of " << IntStudScores.getReading()
 	 << ", listening score of " << IntStudScores.getListening() << ", speaking score of " << IntStudScores.getSpeaking() << ", a writing score of "
 	 << IntStudScores.getWriting() <<"and a total score of"<<IntStudScores.getTotal()<<" with application ID number "<<appId<< endl;
 	 
     istu_count++;
-	  app_count++;
+     app_count++;
   }
 
   //close your file
@@ -200,5 +200,5 @@ ifstream internationalFile("international-stu.txt");
 
   return 0;
 } 
- 
+
 
