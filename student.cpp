@@ -17,7 +17,12 @@ using namespace std;
         //in main.cpp
         Student::Student(string FN, string LN, float cgpa, int Res, int App):
         First_name(FN), Last_name(LN), CGPA(cgpa), Res_score(Res), App_id(App)
-        {}
+        {
+            cgpa_check(cgpa);
+            res_score_check( Res);
+            id_check( App);
+
+        }
         
         //Student GET FUNCTIONS
         //These will return a private member value when called in main.cpp
@@ -98,26 +103,25 @@ using namespace std;
 
 
         //InternationalStudent Class
-        InternationalStudent::InternationalStudent(string Cnt, int score):
-        Country(Cnt), Score(score)
+        InternationalStudent::InternationalStudent(string Cnt):
         {}
         //InternationalStudent GET FUNCTIONS
         string InternationalStudent::getCountry()
         {
             return Country;
         }
-        int InternationalStudent::getToeflScore()
-        {
-            return Score;
-        }
+       //int InternationalStudent::getScore()
+       // {
+        //    return Score;
+       // }
         //InternationalStudent SET FUNCTIONS
         void InternationalStudent::setCountry(string Cnt)
         {
             Country=Cnt;
         }
-        void InternationalStudent::setToeflScore(int score){
-            Score=score;
-        }
+        //void InternationalStudent::setToeflScore(int score){
+        //    Score=score;
+       // }
         //InternationalStudent errorchecking
         //checking if student's score is valid
         void intStu_score_check(int score)
@@ -149,8 +153,9 @@ using namespace std;
 
 
         //ToeflScore Class
-        ToeflScore::ToeflScore(int read, int listen, int speak, int write, int tot):
-        reading(read), listening(listen), speaking(speak), writing(write),total(tot)
+        //took out total from constructor line because can make it with 4 inputs
+        ToeflScore::ToeflScore(int read, int listen, int speak, int write):
+        reading(read), listening(listen), speaking(speak), writing(write)
         {}
         //ToeflScore
         int ToeflScore::getReading()
@@ -236,99 +241,3 @@ using namespace std;
             }
         }
 
-
-/* //student.cpp to implement your classes
-#include "student.hpp"
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-//constructors never have return type
-
-class Student
-{
-    public:
-        //constructor:
-        Student(string FN, string LN, float cgpa, int Res, int App);
-        
-        string getFirst_name();
-        string getLast_name();
-        float getCGPA();
-        int getRes_score();
-        int getApp_id();
-
-        
-
-        void Student::setFirst_name(string FN);
-        void Student::setLast_name(string LN);
-        void Student::setCGPA(float cgpa);
-        void Student::setRes_score(int Res);
-        void Student::setApp_id(int App);
-
-    private:
-        //functions for error checking  
-
-        string First_name;
-        string Last_name;
-        float CGPA;
-        int Res_score;
-        int App_id;
-};
-
-class InternationalStudent : public Student
-{
-    private:
-        string Country;
-        int ToeflScore;
-
-    public: 
-
-        //constructor:
-        InternationalStudent(string Cnt, int score);
-
-        string getCountry();
-        int getToeflScore();
-        void setCountry(string Cnt);
-        void setToeflScore(int score);
-
-};
-
-class DomesticStudent: public Student
-{
-    private:
-            string Province;
-    public:
-                //constructor:
-            DomesticStudent(string PRV);
-
-            string getProvince();
-            void setProvince(string PRV);
-
-};
-
-class ToeflScore
-{
-    private:
-            int reading;
-            int listening;
-            int speaking;
-            int writing;
-            int total;
-    public:
-            //constructor:
-            ToeflScore(int read, int listen, int speak, int write, int tot);
-
-            int getReading();
-            int getListening();
-            int getSpeaking();
-            int getWriting();
-            int getTotal();
-            //just using shortened names
-            void setReading(int read);
-            void setListening(int listen);
-            void setSpeaking(int speak);
-            void setWriting(int write);
-            void setTotal(int tot);
-
-};       */
