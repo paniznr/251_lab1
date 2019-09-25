@@ -11,13 +11,16 @@
 using namespace std;
 
 //constructors never have return type
-
-
+        
+        //Student class:
+        //Creating constructor for student, where FN, LN, cgpa, Res, App are the variables which would be initialized
+        //in main.cpp
         Student::Student(string FN, string LN, float cgpa, int Res, int App):
         First_name(FN), Last_name(LN), CGPA(cgpa), Res_score(Res), App_id(App)
         {}
         
-        //STUDENT GET FUNCTIONS
+        //Student GET FUNCTIONS
+        //These will return a private member value when called in main.cpp
         string Student::getFirst_name()
         {
             return First_name;
@@ -40,8 +43,8 @@ using namespace std;
         }
 
         
-//can we just use one set function for all?
-        //STUDENT SET FUNCTIONS
+        //STUDENT SET FUNCTION
+        //These will apply the value given in main.cpp to the private variable in Student
         void Student::setFirst_name(string FN)
         {
             First_name=FN;
@@ -63,24 +66,24 @@ using namespace std;
             App_id=App;
         }
         //error checking
+        //Checking if CGPA is valid to SFU's marking system
         void cgpa_check(float cgpa)
         {
             if (cgpa<0 || cgpa>4.33)
             {
                 cout<<"Invalid CGPA.";
-                //how do we go to the next line
             }
         }
-        //or should i check CGPA
+        //Checking if Research score is valid
         void res_score_check(int Res)
         {
             if (Res<0 || Res>100)
             {
                 cout<<"Invalid research score.";
-                //how do we go to next line?
             }
         }
 
+        //Checking if application ID is valid (should be between 20200000 and 20209999)
         void id_check(int App)
         {
             if (App<20200000 || App>20209999)
@@ -94,11 +97,11 @@ using namespace std;
 
 
 
-        //constructor:
+        //InternationalStudent Class
         InternationalStudent::InternationalStudent(string Cnt, int score):
         Country(Cnt), Score(score)
         {}
-
+        //InternationalStudent GET FUNCTIONS
         string InternationalStudent::getCountry()
         {
             return Country;
@@ -107,6 +110,7 @@ using namespace std;
         {
             return Score;
         }
+        //InternationalStudent SET FUNCTIONS
         void InternationalStudent::setCountry(string Cnt)
         {
             Country=Cnt;
@@ -114,6 +118,8 @@ using namespace std;
         void InternationalStudent::setToeflScore(int score){
             Score=score;
         }
+        //InternationalStudent errorchecking
+        //checking if student's score is valid
         void intStu_score_check(int score)
         {
             if (score<0 || score>120)
@@ -125,14 +131,16 @@ using namespace std;
 
 
 
-            //constructor:
+        //DomesticStudent 
         DomesticStudent::DomesticStudent(string PRV):
         Province(PRV){}
+        //GET FUNCTION
 
         string  DomesticStudent::getProvince()
         {
             return Province;
         }
+        //SET FUNCTION
         void  DomesticStudent::setProvince(string PRV)
         {
             Province=PRV;
@@ -140,11 +148,11 @@ using namespace std;
 
 
 
-        //constructor:
+        //ToeflScore Class
         ToeflScore::ToeflScore(int read, int listen, int speak, int write, int tot):
         reading(read), listening(listen), speaking(speak), writing(write),total(tot)
         {}
-
+        //ToeflScore
         int ToeflScore::getReading()
         {
             return reading;
