@@ -189,7 +189,7 @@ ifstream internationalFile("international-stu.txt");
 	 << person.getLast_name() << " from " << IntStud.getCountry() << "  has cgpa of "
 	 << person.getCGPA() << ", research score of " << person.getRes_score() << ", reading score of " << IntStudScores.getReading()
 	 << ", listening score of " << IntStudScores.getListening() << ", speaking score of " << IntStudScores.getSpeaking() << ", a writing score of "
-	 << IntStudScores.getWriting() <<"and a total score of"<<IntStudScores.getTotal()<<" with application ID number "<<appId<< endl;
+	 << IntStudScores.getWriting() <<" and a total score of "<<IntStudScores.getTotal()<<" with application ID number "<<appId<< endl;
 	 
     istu_count++;
      app_count++;
