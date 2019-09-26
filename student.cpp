@@ -101,7 +101,7 @@ Student::Student(){};
 
 
         //InternationalStudent Class
-        InternationalStudent::InternationalStudent(string Cnt)
+        InternationalStudent::InternationalStudent(string Cnt,ToeflScore score)
         {}
 InternationalStudent::InternationalStudent(){};
         //InternationalStudent GET FUNCTIONS
@@ -109,10 +109,11 @@ InternationalStudent::InternationalStudent(){};
         {
             return Country;
         }
-       //int InternationalStudent::getScore()
-       // {
-        //    return Score;
-       // }
+       int InternationalStudent::getScore()
+        {
+	int stud_total= Score.getReading()+Score.getWriting()+Score.getSpeaking()+Score.getListening();
+           // return stud_total;
+       }
         //InternationalStudent SET FUNCTIONS
         void InternationalStudent::setCountry(string Cnt)
         {
