@@ -20,9 +20,9 @@ int main(){
   int researchScore;
 
 
-//DOMESTIC STUDENTS -----------------------------------------------------
-    //Read the domestic-stu.txt file and exit if failed
-
+//DOMESTIC STUDENTS ---------------------------------------------------------------
+  
+ //Read the domestic-stu.txt file and exit if failed
   ifstream domesticFile("domestic-stu.txt");
   if(!domesticFile.is_open()) 
   {
@@ -30,10 +30,8 @@ int main(){
     return -1;
   }
   
-
-
-  //Read the first line of domestic-stu.txt, which specifies
-  //the file format. And then print it out to the screen
+  /*Read the first line of domestic-stu.txt which specifies
+  *the file format and then print it out to the screen*/
   getline(domesticFile, line);
   cout << "File format: " << line << endl;
 
@@ -48,6 +46,10 @@ int main(){
   int stu_count = 1;
   app_count=1;
 	
+/*while there is still something to read on the text file
+*continue taking thr formation that is separated by commas
+*
+	*/
   while( getline(domesticFile, line) ) {
     istringstream ss(line);
 
