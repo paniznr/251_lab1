@@ -1,3 +1,6 @@
+//Authors: Paniz Najjarrezaparast and NiKita Cutinho
+//Date: September 25, 2019
+
 //main.cpp, put your driver code here, 
 //you can manipulate your class objects here
 #include <iostream> //cin and cout
@@ -46,10 +49,11 @@ int main(){
   int stu_count = 1;
   app_count=1;
 	
-/*while there is still something to read on the text file
-*continue taking thr formation that is separated by commas
-*
-	*/
+  /*while there is still something to read on the text file
+  *continue taking the information that is separated by commas
+  *and assigning it to the appropriate string varibles
+  *change numbered information from string to int and assign
+  *appropriately*/
   while( getline(domesticFile, line) ) {
     istringstream ss(line);
 
@@ -74,19 +78,13 @@ int main(){
     researchScore = atoi(s_researchScore.c_str());
 	  
 	  
-	//create application IDs
-    
+    //create application IDs
     appId=20200000+(app_count);
     int i=1;
-  
 
+    //objects person and DomStudent use constructors to initialize
     Student person(firstName, lastName, cgpa, researchScore,appId);
     DomesticStudent DomStudent(province);
-    
-
-
-    //person.cgpa_check(cgpa);
-    //print the student info to the screen
 
     //print the student info to the screen
     cout << "Domestic student " << stu_count << " " << person.getFirst_name() << " " 
@@ -94,62 +92,51 @@ int main(){
 	 << person.getCGPA() << ", and research score of " << researchScore << " with application ID number "<<appId<<endl;
 
     stu_count++;
-	app_count++;
+    app_count++;
   }
 
   //close your file
   domesticFile.close();
-	/////////////////////////////////
 	
+//INTERNATIONAL STUDENTS--------------------------------------------------------------------
 	
-	//InternationalStudent ---------------------------------------------------------------
-	
-ifstream internationalFile("international-stu.txt");
+  //Read the international-stu.txt file and exit if failed
+  ifstream internationalFile("international-stu.txt");
   if(!internationalFile.is_open()) 
   {
     cout << "Unable to open file international-stu.txt" << endl;
     return -1;
   }	
 	
-	//INTERNATIONAL STUDENT
-//Read the first line of international-stu.txt, which specifies
-//the file format. And then print it out to the screen
+  //Read the first line of international-stu.txt, which specifies
+  //the file format and then print it out to the screen
   getline(internationalFile, line);
   cout << "File format: " << line << endl;
-//FirstName,LastName,Country,CGPA,ResearchScore,Reading,Listening,Speaking,Writing
 
-  /*Continuing reading the rest of the lines in international-stu.txt.
-   each data is separated by a comma, and then printed out to the screen.
-   Use this read data to initialize the InternationalStudent object.
-   *Then you can
-   *use get and set functions to manipulate your object, and
-   *print the object content to the screen
-   */
+  /*Continuing reading the rest of the lines in international-stu.txt
+  *as there is still information on it.
+  *Each data is separated by a comma, and then printed out to the screen.
+  *Use this read data to initialize the InternationalStudent object.
+  *Use get and set functions to manipulate object,
+  *change numbered information from string to int and assign appropriately
+  *and print the object content to the screen*/
   int istu_count = 1;
   while(getline(internationalFile, line)) 
   {
     /*process each line, each field is separated by a comma.
-    We use istringstream to handle it.
-    */
+    We use istringstream to handle it.*/
     istringstream ss(line);
 
     string Country, s_CGPA, s_ResearchScore, s_Reading, s_Listening, s_Speaking, s_Writing;
-    //float CGPA;
-    //int ResearchScore;
-    /*
-    firstName, lastName;
-  float cgpa;
-  int researchScore;
-    */
     int reading;
     int listening;
     int speaking;
     int writing;
 
-    //get FirstName separated by comma
+    //get firstName separated by comma
     getline(ss, firstName, ',');
 
-    //get LastName separated by comma
+    //get lastName separated by comma
     getline(ss, lastName, ',');
 
     //get Country separated by comma
@@ -181,8 +168,9 @@ ifstream internationalFile("international-stu.txt");
 
     appId=20200000+(app_count);
 
-  ToeflScore IntStudScores( reading,  listening, speaking, writing);
+    ToeflScore IntStudScores( reading,  listening, speaking, writing);
 
+    //objects person and InternationalStudent use constructors to initialize
     Student person(firstName, lastName, cgpa, researchScore, appId);
     InternationalStudent IntStud(Country,IntStudScores);
 	  
@@ -194,7 +182,7 @@ ifstream internationalFile("international-stu.txt");
 	 << IntStudScores.getWriting() <<" and a total score of "<<IntStudScores.getTotal()<<" with application ID number "<<appId<< endl;
 	 
     istu_count++;
-     app_count++;
+    app_count++;
   }
 
   //close your file
