@@ -103,7 +103,7 @@ Student::Student(){};
 
 
         //InternationalStudent Class
-        InternationalStudent::InternationalStudent(string Cnt,ToeflScore score)
+InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(Cnt)
         {}
         InternationalStudent::InternationalStudent(){};
         //InternationalStudent GET FUNCTIONS
