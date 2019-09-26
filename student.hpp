@@ -84,15 +84,16 @@ class InternationalStudent : public Student
 {
 private:
         string Country;
-        int Score;
-        void intStu_score_check(int Score);
+        ToeflScore Score;
+     //   void intStu_score_check(int Score);
 
 public: 
-        InternationalStudent(string Cnt);
+        InternationalStudent(string Cnt,ToeflScore score);
         //Student(string FN, string LN, float cgpa, int Res, int App);
         InternationalStudent();
         string getCountry();
-        //int getScore();
+
+        int getScore();
         void setCountry(string Cnt);
         //void setToeflScore(int score);
 
