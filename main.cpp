@@ -182,7 +182,7 @@ ifstream internationalFile("international-stu.txt");
   ToeflScore IntStudScores( reading,  listening, speaking, writing);
 
     Student person(firstName, lastName, cgpa, researchScore, appId);
-    InternationalStudent IntStud(Country);
+    InternationalStudent IntStud(Country,IntStudScores);
 	  
     //print the student info to the screen
     cout << "International student " << stu_count << " " << person.getFirst_name() << " " 
