@@ -1,28 +1,29 @@
-//student.cpp to implement your classes
+//Authors
+//Paniz Najjarrezaparast
+//Nikita Cutinho
+//Lab1
 
+//----------------------------------------student.cpp---------------------------------
 
-//FILE WITHOUT REDEFINING ALL CLASSES
-
+//In this file we're implementing all of our classes from the header file
 
 #include "student.hpp"
 #include <iostream>
 #include <string>
 
 using namespace std;
+//--------------------------STUDENT----------------
 
-//constructors never have return type
-        
-        //Student class:
-        //Creating constructor for student, where FN, LN, cgpa, Res, App are the variables which would be initialized
-        //in main.cpp
         Student::Student(string FN, string LN, float cgpa, int Res, int App):
         First_name(FN), Last_name(LN), CGPA(cgpa), Res_score(Res), App_id(App)
         {
+	  //Using check functions for Student in constructor, so that all information is checked  immediately
 	  cgpa_check(cgpa);
 	  res_score_check(Res);
 	  id_check(App);
         }
-Student::Student(){};
+        //default constructor for Student
+        Student::Student(){};
         
         //Student GET FUNCTIONS
         //These will return a private member value when called in main.cpp
@@ -70,8 +71,9 @@ Student::Student(){};
         {
             App_id=App;
         }
-        //error checking
-        //Checking if CGPA is valid to SFU's marking system
+        //Error  checking functions:
+        //Checking if CGPA is valid to SFU's marking system, according to assignment instructions
+        //making each function part of their respective class, in this case Student
         void Student::cgpa_check(float cgpa)
         {
             if (cgpa<0 || cgpa>4.33)
@@ -103,8 +105,9 @@ Student::Student(){};
 
 
         //InternationalStudent Class
-InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(Cnt)
+        InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(Cnt)
         {}
+        //InternationalStudent default constructor
         InternationalStudent::InternationalStudent(){};
         //InternationalStudent GET FUNCTIONS
         string InternationalStudent::getCountry()
@@ -113,35 +116,24 @@ InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(
         }
         int InternationalStudent::getScore()
         {
-	int stud_total= Score.getReading()+Score.getWriting()+Score.getSpeaking()+Score.getListening();
-           // return stud_total;
+	  int stud_total= Score.getReading()+Score.getWriting()+Score.getSpeaking()+Score.getListening();
+	  return stud_total;
         }
         //InternationalStudent SET FUNCTIONS
         void InternationalStudent::setCountry(string Cnt)
         {
             Country=Cnt;
         }
-        //void InternationalStudent::setToeflScore(int score){
-        //    Score=score;
-        // }
-        //InternationalStudent errorchecking
-        //checking if student's score is valid
-        /* void InternationalStudent::intStu_score_check(int score)
-        {
-            if (score<0 || score>120)
-            {
-                cout<<"Invalid International student Toefl score.";
-            }
-	    }*/
+       
 
 
 
 
-        //DomesticStudent 
+        //DomesticStudent Class
         DomesticStudent::DomesticStudent(string PRV):
 	  Province(PRV){}
-        //GET FUNCTION
         DomesticStudent::DomesticStudent(){};
+        //DomesticStudent GET FUNCTIONS
         string  DomesticStudent::getProvince()
         {
             return Province;
@@ -155,18 +147,19 @@ InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(
 
 
         //ToeflScore Class
-        //took out total from constructor line because can make it with 4 inputs
+        //Using 4 inputs of specific scores to later create total score
         ToeflScore::ToeflScore(int read, int listen, int speak, int write):
         reading(read), listening(listen), speaking(speak), writing(write)
         {
+	  //checking functions
 	  reading_check(read);
 	  listening_check(listen);
 	  speaking_check(speak);
 	  writing_check(write);
-          //total_check(tot);
+          
         }
+        //ToeflScore default constructor
         ToeflScore::ToeflScore(){};
-        //ToeflScore
         int ToeflScore::getReading()
         {
             return reading;
@@ -186,9 +179,8 @@ InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(
         int ToeflScore::getTotal()
         {
 	  total=reading+listening+speaking+writing;
-            return total;
+          return total;
         }
-        //just using shortened names
         void ToeflScore::setReading(int read)
         {
             reading=read;
@@ -205,16 +197,12 @@ InternationalStudent::InternationalStudent(string Cnt,ToeflScore score):Country(
         {
             writing=write;
         }
-        // void ToeflScore::setTotal(int tot)
-        // {
-        //     total=tot;
-        // }
         void ToeflScore::setTotal(int read, int listen, int speak, int write)
         {
             total=read+listen+speak+write;
         }
 
-
+        //ToeflScore checking functions:
         void ToeflScore::reading_check(int read)
         {
                 if (read<0 || read>30) 
