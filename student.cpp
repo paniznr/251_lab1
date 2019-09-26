@@ -70,7 +70,7 @@ Student::Student(){};
         }
         //error checking
         //Checking if CGPA is valid to SFU's marking system
-        void cgpa_check(float cgpa)
+void Student::cgpa_check(float cgpa)
         {
             if (cgpa<0 || cgpa>4.33)
             {
@@ -78,7 +78,7 @@ Student::Student(){};
             }
         }
         //Checking if Research score is valid
-        void res_score_check(int Res)
+void Student::res_score_check(int Res)
         {
             if (Res<0 || Res>100)
             {
@@ -87,7 +87,7 @@ Student::Student(){};
         }
 
         //Checking if application ID is valid (should be between 20200000 and 20209999)
-        void id_check(int App)
+void Student::id_check(int App)
         {
             if (App<20200000 || App>20209999)
             {
