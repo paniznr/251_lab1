@@ -18,7 +18,9 @@ using namespace std;
         Student::Student(string FN, string LN, float cgpa, int Res, int App):
         First_name(FN), Last_name(LN), CGPA(cgpa), Res_score(Res), App_id(App)
         {
-
+	  cgpa_check(cgpa);
+	  res_score_check(Res);
+	  id_check(App);
         }
 Student::Student(){};
         
@@ -70,7 +72,7 @@ Student::Student(){};
         }
         //error checking
         //Checking if CGPA is valid to SFU's marking system
-void Student::cgpa_check(float cgpa)
+        void Student::cgpa_check(float cgpa)
         {
             if (cgpa<0 || cgpa>4.33)
             {
@@ -78,7 +80,7 @@ void Student::cgpa_check(float cgpa)
             }
         }
         //Checking if Research score is valid
-void Student::res_score_check(int Res)
+        void Student::res_score_check(int Res)
         {
             if (Res<0 || Res>100)
             {
@@ -87,7 +89,7 @@ void Student::res_score_check(int Res)
         }
 
         //Checking if application ID is valid (should be between 20200000 and 20209999)
-void Student::id_check(int App)
+        void Student::id_check(int App)
         {
             if (App<20200000 || App>20209999)
             {
@@ -103,17 +105,17 @@ void Student::id_check(int App)
         //InternationalStudent Class
         InternationalStudent::InternationalStudent(string Cnt,ToeflScore score)
         {}
-InternationalStudent::InternationalStudent(){};
+        InternationalStudent::InternationalStudent(){};
         //InternationalStudent GET FUNCTIONS
         string InternationalStudent::getCountry()
         {
             return Country;
         }
-       int InternationalStudent::getScore()
+        int InternationalStudent::getScore()
         {
 	int stud_total= Score.getReading()+Score.getWriting()+Score.getSpeaking()+Score.getListening();
            // return stud_total;
-       }
+        }
         //InternationalStudent SET FUNCTIONS
         void InternationalStudent::setCountry(string Cnt)
         {
@@ -121,25 +123,25 @@ InternationalStudent::InternationalStudent(){};
         }
         //void InternationalStudent::setToeflScore(int score){
         //    Score=score;
-       // }
+        // }
         //InternationalStudent errorchecking
         //checking if student's score is valid
-        void intStu_score_check(int score)
+        /* void InternationalStudent::intStu_score_check(int score)
         {
             if (score<0 || score>120)
             {
                 cout<<"Invalid International student Toefl score.";
             }
-        }
+	    }*/
 
 
 
 
         //DomesticStudent 
         DomesticStudent::DomesticStudent(string PRV):
-        Province(PRV){}
+	  Province(PRV){}
         //GET FUNCTION
-DomesticStudent::DomesticStudent(){};
+        DomesticStudent::DomesticStudent(){};
         string  DomesticStudent::getProvince()
         {
             return Province;
@@ -156,8 +158,14 @@ DomesticStudent::DomesticStudent(){};
         //took out total from constructor line because can make it with 4 inputs
         ToeflScore::ToeflScore(int read, int listen, int speak, int write):
         reading(read), listening(listen), speaking(speak), writing(write)
-        {}
-ToeflScore::ToeflScore(){};
+        {
+	  reading_check(read);
+	  listening_check(listen);
+	  speaking_check(speak);
+	  writing_check(write);
+          //total_check(tot);
+        }
+        ToeflScore::ToeflScore(){};
         //ToeflScore
         int ToeflScore::getReading()
         {
@@ -207,38 +215,38 @@ ToeflScore::ToeflScore(){};
         }
 
 
-        void reading_check(int read)
+        void ToeflScore::reading_check(int read)
         {
                 if (read<0 || read>30) 
                 {
                         cout<<"Invalid reading Toefl score.";
                 }
         }
-        void listening_check(int listen)
-            {
+        void ToeflScore::listening_check(int listen)
+        {
                 if (listen<0 || listen>30) 
                 {
                         cout<<"Invalid listening Toefl score.";
                 }
         }
-        void speaking_check(int speak)
-            {
+        void ToeflScore::speaking_check(int speak)
+        {
                 if (speak<0 || speak>30) 
                 {
                         cout<<"Invalid speaking Toefl score.";
                 }
         }
-        void writing_check(int write)
-            {
+        void ToeflScore::writing_check(int write)
+        {
                 if (write<0 || write>30) 
                 {
                         cout<<"Invalid writing Toefl score.";
                 }
         }
-        void total_check(int tot)
+        void ToeflScore::total_check(int tot)
         {
             if (tot>120)
             {
                 cout<<"Invalid total Toefl score.";
             }
-}
+        }
