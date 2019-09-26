@@ -76,7 +76,7 @@ Student::Student(){};
         {
             if (cgpa<0 || cgpa>4.33)
             {
-                cout<<"Invalid CGPA.";
+                cout<<"Invalid CGPA. ";
             }
         }
         //Checking if Research score is valid
@@ -84,7 +84,7 @@ Student::Student(){};
         {
             if (Res<0 || Res>100)
             {
-                cout<<"Invalid research score.";
+                cout<<"Invalid research score. ";
             }
         }
 
@@ -93,7 +93,7 @@ Student::Student(){};
         {
             if (App<20200000 || App>20209999)
             {
-                cout<<"Invalid application ID.";
+                cout<<"Invalid application ID. ";
             }
         }
 
@@ -219,34 +219,34 @@ Student::Student(){};
         {
                 if (read<0 || read>30) 
                 {
-                        cout<<"Invalid reading Toefl score.";
+                        cout<<"Invalid reading Toefl score. ";
                 }
         }
         void ToeflScore::listening_check(int listen)
         {
                 if (listen<0 || listen>30) 
                 {
-                        cout<<"Invalid listening Toefl score.";
+                        cout<<"Invalid listening Toefl score. ";
                 }
         }
         void ToeflScore::speaking_check(int speak)
         {
                 if (speak<0 || speak>30) 
                 {
-                        cout<<"Invalid speaking Toefl score.";
+                        cout<<"Invalid speaking Toefl score. ";
                 }
         }
         void ToeflScore::writing_check(int write)
         {
                 if (write<0 || write>30) 
                 {
-                        cout<<"Invalid writing Toefl score.";
+                        cout<<"Invalid writing Toefl score. ";
                 }
         }
         void ToeflScore::total_check(int tot)
         {
             if (tot>120)
             {
-                cout<<"Invalid total Toefl score.";
+                cout<<"Invalid total Toefl score. ";
             }
         }
